@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Promo Es Teller ratu jodha shinta Beli 4 Gratis 1 es teh</title>
+<title>Promo Es Teller Ratu Jodha Shinta</title>
 
 <style>
 body{
@@ -46,6 +46,11 @@ padding:10px;
 border-radius:15px;
 margin-top:10px;
 color:gold;
+}
+.note{
+color:orange;
+font-size:14px;
+margin-top:10px;
 }
 </style>
 </head>
@@ -92,7 +97,6 @@ a.n SHINTA DEWI RATNASARI
 
 <script>
 
-/* TOGGLE METODE */
 function toggleMetode(){
 let metode=document.getElementById("metode").value;
 document.getElementById("rekeningBox").classList.add("hidden");
@@ -104,15 +108,6 @@ document.getElementById("rekeningBox").classList.remove("hidden");
 if(metode=="COD"){
 document.getElementById("alamatBox").classList.remove("hidden");
 }
-}
-
-/* HITUNG ONGKIR OTOMATIS */
-function hitungOngkir(kota){
-kota=kota.toLowerCase();
-if(kota.includes("jakarta")) return 10000;
-if(kota.includes("bekasi")) return 15000;
-if(kota.includes("bandung")) return 20000;
-return 25000; // kota lain
 }
 
 function hitung(){
@@ -138,9 +133,8 @@ return;
 /* PROMO */
 let gratis=Math.floor(jumlah/4);
 let subtotal=harga*jumlah;
-let totalbelumongkir=subtotal;
 
-/* STATUS OTOMATIS */
+/* STATUS */
 let status = metode=="Transfer" ? "Menunggu Transfer" : "Siap Dikirim";
 
 let box=document.getElementById("hasil");
@@ -149,17 +143,17 @@ box.innerHTML=`
 <p>Jumlah: ${jumlah} Cup</p>
 <p>Gratis: ${gratis} Cup 🎉</p>
 <p>Subtotal: Rp ${subtotal.toLocaleString()}</p>
-<p class="total">Total Bayar: Rp ${total.toLocaleString()}</p>
+<p class="note">📦 Ongkir konfirmasi langsung ke admin</p>
+<p class="total">Total Produk: Rp ${subtotal.toLocaleString()}</p>
 <p>Status Pesanan: <b>${status}</b></p>
 
-<button onclick="kirimWA(${total},${gratis},'${status}">
+<button onclick="kirimWA(${subtotal},${gratis},'${status}')">
 Konfirmasi via WhatsApp
 </button>
 `;
-
 }
 
-function kirimWA(total,gratis,status,ongkir){
+function kirimWA(total,gratis,status){
 
 let nama=document.getElementById("nama").value;
 let kota=document.getElementById("kota").value;
@@ -175,7 +169,8 @@ let text=encodeURIComponent(
 "\n\nPesan:\n"+produk+
 "\nJumlah: "+jumlah+
 "\nGratis: "+gratis+
-"\nTotal: Rp "+total.toLocaleString()+
+"\nTotal Produk: Rp "+total.toLocaleString()+
+"\nOngkir: Konfirmasi admin"+
 "\nMetode: "+metode+
 "\nStatus: "+status+
 (metode=="COD" ? "\nAlamat:\n"+alamat : "")
