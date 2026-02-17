@@ -138,8 +138,7 @@ return;
 /* PROMO */
 let gratis=Math.floor(jumlah/4);
 let subtotal=harga*jumlah;
-let ongkir=hitungOngkir(kota);
-let total=subtotal+ongkir;
+let totalbelumongkir=subtotal;
 
 /* STATUS OTOMATIS */
 let status = metode=="Transfer" ? "Menunggu Transfer" : "Siap Dikirim";
@@ -150,11 +149,10 @@ box.innerHTML=`
 <p>Jumlah: ${jumlah} Cup</p>
 <p>Gratis: ${gratis} Cup 🎉</p>
 <p>Subtotal: Rp ${subtotal.toLocaleString()}</p>
-<p>Ongkir: Rp ${ongkir.toLocaleString()}</p>
 <p class="total">Total Bayar: Rp ${total.toLocaleString()}</p>
 <p>Status Pesanan: <b>${status}</b></p>
 
-<button onclick="kirimWA(${total},${gratis},'${status}',${ongkir})">
+<button onclick="kirimWA(${total},${gratis},'${status}">
 Konfirmasi via WhatsApp
 </button>
 `;
