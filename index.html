@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Es Teller Ratu Jodha - Cinematic</title>
+<title>Es Teller Ratu Jodha - Cinematic Animated</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -31,11 +31,35 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(
-rgba(0,0,0,0.8),
-rgba(0,0,0,0.7)
-);
+background:linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.75));
 z-index:0;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+0%{opacity:0;transform:translateY(40px);}
+100%{opacity:1;transform:translateY(0);}
+}
+
+@keyframes glowText{
+0%{text-shadow:0 0 5px rgba(0,234,255,0.3);}
+50%{text-shadow:0 0 25px rgba(0,234,255,1);}
+100%{text-shadow:0 0 5px rgba(0,234,255,0.3);}
+}
+
+.animate{
+opacity:0;
+animation:fadeUp 1s ease forwards;
+}
+
+.delay1{animation-delay:0.3s;}
+.delay2{animation-delay:0.6s;}
+.delay3{animation-delay:0.9s;}
+.delay4{animation-delay:1.2s;}
+.delay5{animation-delay:1.5s;}
+
+.glow{
+animation:glowText 2.5s infinite;
 }
 
 /* HEADER */
@@ -55,7 +79,6 @@ letter-spacing:1px;
 
 header p{
 margin-top:10px;
-font-weight:300;
 opacity:0.8;
 }
 
@@ -68,7 +91,7 @@ max-width:600px;
 margin:auto;
 }
 
-/* CARD GLASS EFFECT */
+/* CARD */
 .card{
 background:rgba(255,255,255,0.08);
 backdrop-filter:blur(20px);
@@ -81,7 +104,7 @@ transition:0.4s;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-10px);
 }
 
 .card img{
@@ -102,7 +125,7 @@ font-weight:700;
 margin:10px 0;
 }
 
-/* BUTTON GLOW */
+/* BUTTON */
 .btn{
 display:inline-block;
 padding:14px 35px;
@@ -117,8 +140,8 @@ box-shadow:0 0 20px rgba(0,198,255,0.6);
 }
 
 .btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 35px rgba(0,198,255,1);
+transform:scale(1.1);
+box-shadow:0 0 40px rgba(0,198,255,1);
 }
 
 /* VIDEO */
@@ -146,11 +169,6 @@ text-align:center;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-.payment h3{
-margin-bottom:15px;
-color:#00eaff;
-}
-
 /* FOOTER */
 footer{
 position:relative;
@@ -162,7 +180,7 @@ background:rgba(0,0,0,0.7);
 font-size:14px;
 }
 
-/* Floating WhatsApp */
+/* FLOAT WA */
 .floating-wa{
 position:fixed;
 bottom:20px;
@@ -179,8 +197,8 @@ z-index:3;
 }
 
 .floating-wa:hover{
-transform:scale(1.1);
-box-shadow:0 0 40px rgba(37,211,102,1);
+transform:scale(1.15);
+box-shadow:0 0 50px rgba(37,211,102,1);
 }
 </style>
 </head>
@@ -188,37 +206,41 @@ box-shadow:0 0 40px rgba(37,211,102,1);
 <body>
 
 <header>
-<h1>🍧 Es Teller Creamy Ratu Jodha</h1>
-<p>Segar • Creamy • Nikmat • Bikin Nagih</p>
+<h1 class="animate glow">🍧 Es Teller Creamy Ratu Jodha</h1>
+<p class="animate delay1">Segar • Creamy • Nikmat • Bikin Nagih</p>
 </header>
 
 <div class="container">
 
-<div class="card">
+<div class="card animate delay2">
 <img src="https://images.unsplash.com/photo-1598514982842-3d6f7f5d4e5c" alt="Es Teller di Cup">
 
 <div class="card-content">
-<h2>Es Teller Creamy Spesial</h2>
-<p>Perpaduan 🥑 alpukat segar, jelly, nangka, durian, susu creamy dengan sensasi dingin menyegarkan.</p>
-<p class="price">Cup Reguler Rp 5.000</p>
-<p class="price">Cup Jumbo Rp 8.000</p>
+<h2 class="animate delay3">Es Teller Creamy Spesial</h2>
 
-<a class="btn" href="https://wa.me/6287743228938?text=Halo%20saya%20mau%20pesan%20Es%20Teller%20Ratu%20Jodha">
+<p class="animate delay4">
+Perpaduan 🥑 alpukat segar, jelly, nangka, durian, susu creamy dengan sensasi dingin menyegarkan.
+</p>
+
+<p class="price animate delay4">Cup Reguler Rp 5.000</p>
+<p class="price animate delay5">Cup Jumbo Rp 8.000</p>
+
+<a class="btn animate delay5" href="https://wa.me/6287743228938?text=Halo%20saya%20mau%20pesan%20Es%20Teller%20Ratu%20Jodha">
 Pesan Sekarang
 </a>
 </div>
 </div>
 
 <div class="video-section">
-<h3 style="margin-top:40px;">🎬 Video Special Ratu Jodha</h3>
+<h3 class="animate delay3" style="margin-top:40px;">🎬 Video Special Ratu Jodha</h3>
 
-<video autoplay muted loop playsinline>
+<video autoplay muted loop playsinline class="animate delay4">
 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
 Browser kamu tidak mendukung video.
 </video>
 
-<div class="payment">
-<h3>💳 Metode Pembayaran</h3>
+<div class="payment animate delay5">
+<h3 class="glow">💳 Metode Pembayaran</h3>
 <p>✔ Transfer Bank</p>
 <p>✔ QRIS</p>
 <p>✔ Bayar via DO</p>
@@ -227,7 +249,7 @@ Browser kamu tidak mendukung video.
 </div>
 </div>
 
-<footer>
+<footer class="animate delay5">
 © 2026 Es Teller Ratu Jodha | Fresh Every Day 💙
 </footer>
 
@@ -236,4 +258,4 @@ Chat WA
 </a>
 
 </body>
-</html>
+  </html>
