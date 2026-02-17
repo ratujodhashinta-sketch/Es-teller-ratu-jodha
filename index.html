@@ -199,6 +199,37 @@ Pesan Sekarang
 </div>
 
 <div class="video-section">
+  <h3 style="margin-top:30px;">🥤 Lagi Nikmat Minum Es Teller</h3>
+
+<div class="animated-video">
+<video autoplay muted loop playsinline>
+<source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+Browser kamu tidak mendukung video.
+</video>
+</div>
+  /* ANIMATED VIDEO */
+.animated-video{
+margin-top:15px;
+animation:fadeSlide 2s ease-in-out;
+}
+
+.animated-video video{
+width:100%;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Animation */
+@keyframes fadeSlide{
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
 <h3>🎬 Video Special Ratu Jodha</h3>
 
 <video autoplay muted loop playsinline>
@@ -225,4 +256,6 @@ Chat WA
 </a>
 
 </body>
-</html
+</html>
+
+
