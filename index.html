@@ -114,6 +114,8 @@ border-radius:50px;
 margin-top:20px;
 font-weight:bold;
 transition:0.3s;
+border:none;
+cursor:pointer;
 }
 
 .btn:hover{
@@ -130,7 +132,8 @@ border:1px solid rgba(255,215,0,0.6);
 border-radius:30px;
 }
 
-.form-section input{
+.form-section input,
+.form-section select{
 width:100%;
 padding:15px;
 margin:12px 0;
@@ -163,9 +166,7 @@ margin-top:100px;
 <div class="overlay"></div>
 
 <section class="section hero">
-<h1 class="gold">
-👑 FRANCHISE NASIONAL ULTIMATE 👑
-</h1>
+<h1 class="gold">👑 FRANCHISE NASIONAL ULTIMATE 👑</h1>
 <h2 class="gold" style="font-size:28px;margin-top:15px;">
 ES TELER CREAMY RATU JODHA SHINTA
 </h2>
@@ -173,66 +174,51 @@ ES TELER CREAMY RATU JODHA SHINTA
 Bangun Bisnis Minuman Premium Bersama Brand Royal Empire  
 Dengan Sistem Teruji & Dukungan Nasional
 </p>
-
 <a class="btn" href="#daftar">Gabung Sekarang</a>
 </section>
 
 <section class="section">
 <h2 class="gold">💎 Paket Kemitraan Franchise 💎</h2>
-
 <div class="packages">
 
 <div class="card">
 <h3>PAKET SILVER</h3>
 <p class="price">Investasi 3 Juta</p>
-<p>✔ Booth Standard<br>
-✔ Bahan Awal 100 Cup<br>
-✔ Banner & Branding<br>
-✔ Training Online</p>
+<p>✔ Booth Standard<br>✔ Bahan Awal 100 Cup<br>✔ Banner & Branding<br>✔ Training Online</p>
 </div>
 
 <div class="card">
 <h3>PAKET GOLD</h3>
 <p class="price">Investasi 6 Juta</p>
-<p>✔ Booth Premium<br>
-✔ Bahan Awal 250 Cup<br>
-✔ Free Marketing Kit<br>
-✔ Training + Support</p>
+<p>✔ Booth Premium<br>✔ Bahan Awal 250 Cup<br>✔ Free Marketing Kit<br>✔ Training + Support</p>
 </div>
 
 <div class="card">
 <h3>PAKET ROYAL</h3>
 <p class="price">Investasi 10 Juta</p>
-<p>✔ Booth Luxury Custom<br>
-✔ Bahan Awal 500 Cup<br>
-✔ Full Branding Nasional<br>
-✔ Prioritas Wilayah</p>
+<p>✔ Booth Luxury Custom<br>✔ Bahan Awal 500 Cup<br>✔ Full Branding Nasional<br>✔ Prioritas Wilayah</p>
 </div>
 
 </div>
-</section>
-
-<section class="section">
-<h2 class="gold">📊 Estimasi Potensi Keuntungan</h2>
-<p style="margin-top:20px;">
-Penjualan rata-rata 80 cup/hari x Rp5.000  
-= Rp400.000/hari  
-= ± Rp12.000.000/bulan  
-(Estimasi tergantung lokasi & strategi marketing)
-</p>
 </section>
 
 <section id="daftar" class="section form-section">
 <h2 class="gold">📝 Daftar Franchise Sekarang</h2>
 
-<input type="text" placeholder="Nama Lengkap">
-<input type="text" placeholder="Nomor WhatsApp">
-<input type="text" placeholder="Kota / Provinsi">
-<input type="text" placeholder="Pilih Paket (Silver/Gold/Royal)">
+<input type="text" id="nama" placeholder="Nama Lengkap">
+<input type="text" id="wa" placeholder="Nomor WhatsApp (08xxxx)">
+<input type="text" id="kota" placeholder="Kota / Provinsi">
 
-<a class="btn" href="https://wa.me/6287743228938?text=Saya%20ingin%20daftar%20Franchise%20Nasional%20Ultimate">
-Kirim Pendaftaran
-</a>
+<select id="paket">
+<option value="">-- Pilih Paket Franchise --</option>
+<option value="PAKET SILVER - Investasi 3 Juta">PAKET SILVER - 3 Juta</option>
+<option value="PAKET GOLD - Investasi 6 Juta">PAKET GOLD - 6 Juta</option>
+<option value="PAKET ROYAL - Investasi 10 Juta">PAKET ROYAL - 10 Juta</option>
+</select>
+
+<button class="btn" onclick="kirimData()">Kirim Pendaftaran</button>
+<p id="notif" style="display:none;margin-top:15px;color:#FFD700;">🚀 Mengarahkan ke WhatsApp...</p>
+
 </section>
 
 <footer>
@@ -240,6 +226,48 @@ Kirim Pendaftaran
 ES TELER CREAMY RATU JODHA SHINTA  
 National Brand • Premium System • Royal Standard
 </footer>
+
+<script>
+function kirimData(){
+
+var nama=document.getElementById("nama").value.trim();
+var wa=document.getElementById("wa").value.trim();
+var kota=document.getElementById("kota").value.trim();
+var paket=document.getElementById("paket").value;
+var notif=document.getElementById("notif");
+
+if(nama==""||wa==""||kota==""||paket==""){
+alert("Mohon lengkapi semua data.");
+return;
+}
+
+if(!/^[0-9]+$/.test(wa)){
+alert("Nomor WhatsApp hanya boleh angka.");
+return;
+}
+
+if(wa.startsWith("08")){
+wa="62"+wa.substring(1);
+}
+
+notif.style.display="block";
+
+var pesan=
+"Halo Admin Royal Empire,%0A%0A"+
+"Saya ingin mendaftar Franchise Nasional Ultimate.%0A%0A"+
+"Nama: "+nama+"%0A"+
+"No WA: "+wa+"%0A"+
+"Kota: "+kota+"%0A"+
+"Paket: "+paket+"%0A%0A"+
+"Mohon info selanjutnya 🙏";
+
+setTimeout(function(){
+window.open("https://wa.me/6287743228938?text="+pesan,"_blank");
+notif.style.display="none";
+},1000);
+
+}
+</script>
 
 </body>
   </html>
