@@ -217,6 +217,46 @@ Dengan Sistem Teruji & Dukungan Nasional
 
 </section>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Shorts Autoplay Mobile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; background:black; display:flex; justify-content:center; align-items:center; height:100vh;">
+
+  <div id="player"></div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    var player;
+    var started = false;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '560',
+        width: '315',
+        videoId: 'LcjH61sfzJo',
+        playerVars: {
+          autoplay: 0,
+          mute: 1,
+          playsinline: 1,
+          controls: 0
+        }
+      });
+    }
+
+    // Autoplay setelah user tap pertama
+    document.body.addEventListener("click", function () {
+      if (!started && player) {
+        player.playVideo();
+        started = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
 <footer>
 © 2026 RATU JODHA SHINTA 
 ES TELER CREAMY RATU JODHA SHINTA  
