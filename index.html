@@ -3,286 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FRANCHISE NASIONAL ULTIMATE | ES TELER CREAMY RATU JODHA SHINTA</title>
+<title>AI Franchise Closer Elite</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<!-- FACEBOOK PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}
+(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','YOUR_PIXEL_ID');
+fbq('track','PageView');
+</script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
 body{
-font-family:'Poppins',sans-serif;
 background:#000;
 color:#fff;
-overflow-x:hidden;
-scroll-behavior:smooth;
-}
-
-/* Luxury Glow Background */
-body::before{
-content:"";
-position:fixed;
-width:900px;height:900px;
-background:radial-gradient(circle,#FFD70033,transparent 70%);
-top:-300px;left:-300px;
-z-index:-1;
-animation:floatGlow 10s infinite alternate;
-}
-@keyframes floatGlow{
-0%{transform:translate(0,0);}
-100%{transform:translate(250px,250px);}
-}
-
-/* Section Animation */
-.section{
-max-width:1100px;
-margin:auto;
-padding:100px 20px;
+font-family:Arial;
 text-align:center;
-opacity:0;
-transform:translateY(40px);
-transition:1s ease;
+padding:40px;
 }
-.section.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* Gold Effect */
-.gold{
-font-family:'Playfair Display',serif;
-background:linear-gradient(90deg,#FFD700,#fff8dc,#FFD700);
-background-size:300%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:shimmer 5s linear infinite;
-}
-@keyframes shimmer{
-0%{background-position:-200px;}
-100%{background-position:200px;}
-}
-
-/* Button */
-.btn{
-display:inline-block;
-padding:15px 40px;
-background:linear-gradient(90deg,#FFD700,#C9A227);
-color:black;
-border-radius:50px;
-margin-top:25px;
-font-weight:bold;
-text-decoration:none;
-transition:0.3s;
-cursor:pointer;
-}
-.btn:hover{
-transform:scale(1.1);
-box-shadow:0 0 30px gold;
-}
-
-/* Slot Counter */
-.slot{
-margin-top:15px;
-color:#FFD700;
-font-weight:bold;
-}
-
-/* Growth Bar */
-.growth{
-margin-top:40px;
-background:#222;
-border-radius:30px;
-overflow:hidden;
-}
-.growth-bar{
-height:25px;
-width:0%;
-background:linear-gradient(90deg,gold,#C9A227);
-transition:2s;
-}
-
-/* Simulator */
-.simulator input{
-width:100%;
-padding:15px;
-margin:15px 0;
-border-radius:15px;
+h1{color:gold}
+input{
+width:90%;
+max-width:400px;
+padding:12px;
+margin:8px;
+border-radius:10px;
 border:none;
 }
-.result{
-margin-top:20px;
-color:#FFD700;
-font-size:20px;
-font-weight:bold;
+button{
+padding:12px 25px;
+background:gold;
+border:none;
+cursor:pointer;
+border-radius:20px;
 }
-
-/* Popup */
-.popup{
-position:fixed;
-bottom:30px;
-right:30px;
+.chatbox{
+margin-top:20px;
+padding:20px;
 background:#111;
 border:1px solid gold;
-padding:20px;
 border-radius:20px;
 display:none;
-box-shadow:0 0 30px gold;
-z-index:9999;
-max-width:280px;
 }
-
-/* Live Notification */
-.liveNotif{
-position:fixed;
-top:20px;
-left:20px;
-background:#111;
-border:1px solid gold;
-padding:15px 20px;
-border-radius:15px;
-display:none;
-box-shadow:0 0 20px gold;
-z-index:9999;
-font-size:14px;
-}
-
-/* Footer */
-footer{
-margin-top:100px;
-padding:50px;
-border-top:1px solid rgba(255,215,0,0.4);
-opacity:0.7;
-}
+.timer{color:gold;font-size:18px;margin-bottom:20px}
+.hot{color:red;font-weight:bold}
 </style>
 </head>
 
 <body>
 
-<section class="section hero">
-<h1 class="gold">👑 FRANCHISE NASIONAL ULTIMATE 👑</h1>
-<h2 class="gold">ES TELER CREAMY RATU JODHA SHINTA</h2>
+<h1>🤖 AI Franchise es teller creamy ratu jodha shinta</h1>
+<div class="timer">⏳ Promo Berakhir Dalam: <span id="timer"></span></div>
 
-<div style="margin-top:20px;font-size:20px;color:#FFD700;">
-⏳ Promo Berakhir Dalam: <span id="timer"></span>
-</div>
+<input id="nama" placeholder="Nama Anda">
+<input id="kota" placeholder="Kota Anda">
+<input id="wa" placeholder="Nomor WhatsApp">
+<input id="pesan" placeholder="Tulis pertanyaan Anda...">
 
-<div class="slot">
-📍 Sisa Slot Kota Anda: <span id="slotCounter"></span>
-</div>
+<button onclick="proses()">Kirim ke AI</button>
 
-<a href="#simulator" class="btn">Hitung Potensi Profit</a>
-
-<div class="growth">
-<div class="growth-bar" id="growthBar"></div>
-</div>
-
-<p style="margin-top:10px;font-size:14px;">
-🏆 Official National Brand • Target 100+ Kota
-</p>
-</section>
-
-<section class="section simulator" id="simulator">
-<h2 class="gold">💰 Simulasi Estimasi Profit</h2>
-
-<input type="number" id="cup" placeholder="Penjualan per Hari (Cup)">
-<input type="number" id="harga" placeholder="Harga Jual per Cup (Rp)">
-<button class="btn" onclick="hitungProfit()">Hitung & Kirim ke WhatsApp</button>
-
-<div class="result" id="hasil"></div>
-</section>
-
-<section class="section" style="text-align:left;max-width:900px;">
-<h2 class="gold" style="text-align:center;">📊 Investor Overview</h2>
-<p><strong style="color:#FFD700;">✔ Market:</strong> Industri minuman terus tumbuh nasional.</p>
-<p><strong style="color:#FFD700;">✔ Margin:</strong> 55%–65%.</p>
-<p><strong style="color:#FFD700;">✔ BEP:</strong> 2–4 bulan.</p>
-<p><strong style="color:#FFD700;">✔ Ekspansi:</strong> Target 100+ Kota.</p>
-</section>
-
-<div class="popup" id="popupUrgency">
-<strong style="color:#FFD700;">🔥 Slot Hampir Habis!</strong>
-<p style="margin-top:10px;">Beberapa kota sudah full. Amankan sekarang.</p>
-<button class="btn" onclick="tutupPopup()">Tutup</button>
-</div>
-
-<div class="liveNotif" id="liveNotif"></div>
-
-<footer>
-© 2026 RATU JODHA SHINTA  
-National Brand • Premium System • Royal Standard
-</footer>
+<div class="chatbox" id="chatbox"></div>
 
 <script>
-/* Scroll Animation */
-const sections=document.querySelectorAll('.section');
-window.addEventListener('scroll',()=>{
-sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight-100){
-sec.classList.add('show');
-}
-});
-});
 
-/* Countdown 48 Jam */
-var countDownDate=new Date().getTime()+48*60*60*1000;
-setInterval(function(){
-var now=new Date().getTime();
-var distance=countDownDate-now;
-var h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-var m=Math.floor((distance%(1000*60*60))/(1000*60));
-var s=Math.floor((distance%(1000*60))/1000);
+/* COUNTDOWN UNIK PER VISITOR */
+if(!localStorage.getItem("endTime")){
+localStorage.setItem("endTime", Date.now()+48*60*60*1000);
+}
+setInterval(()=>{
+let sisa=localStorage.getItem("endTime")-Date.now();
+let h=Math.floor(sisa/1000/60/60);
+let m=Math.floor((sisa/1000/60)%60);
+let s=Math.floor((sisa/1000)%60);
 document.getElementById("timer").innerHTML=h+"j "+m+"m "+s+"d";
 },1000);
 
-/* Slot Counter */
-var slot=Math.floor(Math.random()*3)+1;
-document.getElementById("slotCounter").innerHTML=slot+" Slot";
+/* AI PSIKOLOGIS */
+function generateAI(message,kota){
 
-/* Growth Bar */
-setTimeout(()=>{document.getElementById("growthBar").style.width="75%";},1000);
+message=message.toLowerCase();
+let score=0;
+let reply="";
 
-/* Popup Urgency */
-function tampilPopup(){document.getElementById("popupUrgency").style.display="block";}
-function tutupPopup(){document.getElementById("popupUrgency").style.display="none";}
-setInterval(tampilPopup,20000);
-
-/* Fake Live Notification */
-var names=["Budi","Sari","Rizky","Dewi","Andi","Putri"];
-var cities=["Jakarta","Bandung","Surabaya","Medan","Makassar"];
-setInterval(function(){
-var notif=document.getElementById("liveNotif");
-notif.innerHTML="🔥 "+names[Math.floor(Math.random()*names.length)]+" dari "+cities[Math.floor(Math.random()*cities.length)]+" baru mendaftar!";
-notif.style.display="block";
-setTimeout(()=>{notif.style.display="none";},5000);
-},15000);
-
-/* Profit Simulator + WA Redirect */
-function hitungProfit(){
-var cup=document.getElementById("cup").value;
-var harga=document.getElementById("harga").value;
-if(cup==""||harga==""){alert("Isi data dulu.");return;}
-var omzet=cup*harga;
-var profit=omzet*0.6;
-var omzetBulanan=omzet*30;
-var profitBulanan=profit*30;
-
-document.getElementById("hasil").innerHTML=
-"Omzet/Bulan: Rp "+omzetBulanan.toLocaleString()+"<br>"+
-"Profit/Bulan: Rp "+profitBulanan.toLocaleString();
-
-setTimeout(function(){
-var pesan=
-"Halo Admin,%0A%0A"+
-"Saya tertarik Franchise Ratu Jodha Shinta.%0A%0A"+
-"Simulasi:%0A"+
-"Penjualan/Hari: "+cup+" cup%0A"+
-"Harga: Rp "+harga+"%0A"+
-"Omzet/Bulan: Rp "+omzetBulanan.toLocaleString()+"%0A"+
-"Profit/Bulan: Rp "+profitBulanan.toLocaleString()+"%0A%0A"+
-"Mohon info selanjutnya.";
-
-window.open("https://wa.me/6287743228938?text="+pesan,"_blank");
-},3000);
+if(message.includes("harga")||message.includes("mahal")){
+score+=25;
+reply="Saya paham pertanyaan soal harga 👍\n\nJustru yang penting itu ROI. Rata-rata mitra BEP 2-4 bulan.\nKalau dihitung per hari, modalnya bahkan lebih kecil dari biaya nongkrong kopi premium.";
 }
+
+else if(message.includes("takut")||message.includes("ragu")){
+score+=20;
+reply="Wajar kalau ada rasa khawatir 😊\n\nKarena itu sistem kami sudah teruji di banyak kota.\nBahkan beberapa mitra di kota setara "+kota+" sudah profit stabil.";
+}
+
+else if(message.includes("lokasi")){
+score+=20;
+reply="Untuk kota "+kota+", slot sudah hampir penuh.\nKami memang batasi agar tidak saling makan pasar.";
+}
+
+else if(message.includes("deal")||message.includes("gas")||message.includes("ambil")){
+score+=50;
+reply="🔥 Siap! Keputusan yang cerdas.\n\nUntuk amankan slot kota "+kota+", Anda bisa langsung DP melalui link berikut:\nhttps://payment-link";
+}
+
+else{
+reply="Terima kasih sudah menghubungi kami 😊\n\nBoleh saya tahu, yang paling ingin Anda ketahui tentang franchise ini apa?";
+}
+
+if(score>=60){
+reply+="\n\n🔥 Status Anda: HOT LEAD";
+document.getElementById("chatbox").classList.add("hot");
+}
+
+return reply;
+}
+
+function typingEffect(text){
+let box=document.getElementById("chatbox");
+box.style.display="block";
+box.innerHTML="";
+let i=0;
+let interval=setInterval(()=>{
+box.innerHTML+=text.charAt(i);
+i++;
+if(i>=text.length) clearInterval(interval);
+},25);
+}
+
+/* PROSES */
+function proses(){
+
+let nama=document.getElementById("nama").value;
+let kota=document.getElementById("kota").value;
+let wa=document.getElementById("wa").value;
+let pesan=document.getElementById("pesan").value;
+
+if(!nama||!kota||!wa||!pesan){
+alert("Lengkapi data dulu");
+return;
+}
+
+fbq('track','Lead');
+
+let reply=generateAI(pesan,kota);
+
+typingEffect("🤖 AI sedang mengetik...\n\n");
+
+setTimeout(()=>{
+typingEffect(reply);
+
+setTimeout(()=>{
+let text=encodeURIComponent(
+"Halo Admin, saya "+nama+
+" dari "+kota+
+".\n\nTertarik franchise.\n\nPertanyaan saya:\n"+pesan
+);
+window.open("https://wa.me/6287743228938?text="+text,"_blank");
+},3000);
+
+},1500);
+
+}
+
 </script>
 
 </body>
