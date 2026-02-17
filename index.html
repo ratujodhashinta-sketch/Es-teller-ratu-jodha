@@ -403,3 +403,92 @@ updateHP();
 battleInterval = setInterval(randomHit,800);
 }
   </script>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Komo Si Komodo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #87CEEB, #f4d35e);
+      text-align: center;
+    }
+
+    header {
+      background: #2a9d8f;
+      color: white;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    .character {
+      width: 250px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .character:hover {
+      transform: scale(1.1);
+    }
+
+    .speech {
+      background: white;
+      display: inline-block;
+      padding: 15px 20px;
+      border-radius: 20px;
+      margin-top: 20px;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #e76f51;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #d62828;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      background: #264653;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🦎 Komo Si Komodo Pemberani
+  </header>
+
+  <div class="container">
+    <img src="https://i.imgur.com/8Km9tLL.png" alt="Komo Komodo" class="character" onclick="ubahDialog()">
+
+    <div class="speech" id="dialog">
+      Halo! Aku Komo, komodo paling keren!
+    </div>
+
+    <br>
+    <button onclick="ubahDialog()">Klik untuk Bicara</button>
+  </div>
+
+  <footer>
+    © 2026 Komo Animation Studio | Website
